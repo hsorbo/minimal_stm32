@@ -9,6 +9,10 @@ extern uint32_t _estack;
 
 extern void __libc_init_array();
 
+void die() {
+    while(1);
+}
+
 int main()
 {
 
@@ -33,11 +37,11 @@ void Reset_Handler() {
 
     __libc_init_array();
     main();
-    while(1);
+    die();
 }
 
 void Default_Handler(void) {
-    while(1);
+    die();
 }
 
 #define WEAK_ALIAS(fcn)     __attribute__((weak, alias(fcn)))
